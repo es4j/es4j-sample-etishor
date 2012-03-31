@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Sample.ReadModel.Funds.Document>
+
+@{
+    ViewBag.Title = "Documents";
+}
+
+<h2>Documents</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateDocument")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            AccessionNumber
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Details", "Document", new { id=item.AggregateId })
+        </td>
+        <td>
+            @item.AccessionNumber
+        </td>
+    </tr>
+}
+
+</table>
+

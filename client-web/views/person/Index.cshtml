@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Sample.ReadModel.People.Person>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p> @Html.ActionLink("Create New", "Create")</p>
+
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            Street
+        </th>
+        <th>
+            StreetNumber
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Move", "Move", new { id = item.AggregateId }) |
+            @Html.ActionLink("Kill", "Kill", new { id = item.AggregateId }) |
+        </td>
+        <td>
+            @item.Name
+        </td>
+        <td>
+            @item.Street
+        </td>
+        <td>
+            @item.StreetNumber
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+<p>@Html.ActionLink("View Dead Persons", "DeadPersons")</p>
+<p>@Html.ActionLink("View Address Changes", "AddressChanges")</p>
+<p>@Html.ActionLink("Refresh List", "Index") (welcome to the beautiful world of <a href="http://en.wikipedia.org/wiki/Eventual_consistency">eventual consistency</a>)</p>
+</div>

@@ -1,0 +1,49 @@
+﻿@model Sample.ReadModel.People.Person
+
+@{
+    ViewBag.Title = "Move";
+}
+
+<h2>Move</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Person</legend>
+
+        @Html.HiddenFor(model => model.AggregateId)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Street)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Street)
+            @Html.ValidationMessageFor(model => model.Street)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StreetNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StreetNumber)
+            @Html.ValidationMessageFor(model => model.StreetNumber)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
