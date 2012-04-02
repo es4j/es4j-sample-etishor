@@ -1,49 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Sample.Messages;
-using CommonDomain.Core;
-using Sample.Messages.Events.Funds;
+package com.lingona.es4j.sample.etishor.domainmodel.funds;
 
-namespace Sample.DomainModel.Funds
-{
-    public class Document : AggregateBase<IEvent>
-    {
-        private AccessionNumber accessionNumber;
-        private IList<DocumentShareClassAssociation> shareClassAssociations = new List<DocumentShareClassAssociation>();
+import com.lingona.es4j.domain.api.IAggregate;
+import com.lingona.es4j.domain.core.AggregateBase;
+import com.lingona.es4j.sample.etishor.messages.IEvent;
+import com.lingona.es4j.sample.etishor.messages.events.funds.DocumentAssociatedWithShareclass;
+import com.lingona.es4j.sample.etishor.messages.events.funds.DocumentCreated;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
+//using Sample.Messages;
+//using CommonDomain.Core;
+//using Sample.Messages.Events.Funds;
 
-        private Document(Guid id)
-        {
-            this.Id = id;
+
+public class Document extends AggregateBase<IEvent> {
+
+    private AccessionNumber accessionNumber;
+    private List<DocumentShareClassAssociation> shareClassAssociations = new LinkedList<DocumentShareClassAssociation>();
+
+    private Document(UUID id) {
+        this.id = id;
+    }
+
+    public Document(UUID id, AccessionNumber accessionNumber) {
+        this.id = id;
+        raiseEvent(new DocumentCreated(id, accessionNumber.getValue()));
+    }
+
+    public void associateWithShareClass(DocumentShareClassAssociation association) {
+        if (!association.getShareType().isLinkable()) {
+            throw new IllegalStateException("Only linkable share classes can be associated with documents");
         }
 
-        public Document(Guid id, AccessionNumber accessionNumber)
-            :this(id)
-        {
-            RaiseEvent(new DocumentCreated(id, accessionNumber.Value));
-        }
+        raiseEvent(new DocumentAssociatedWithShareclass(this.id, association.getShareClassId(), association.getShareType().getName().toString()));
+    }
 
-        public void AssociateWithShareClass(DocumentShareClassAssociation association)
-        {
-            if (!association.ShareType.IsLinkable)
-            {
-                throw new InvalidOperationException("Only linkable share classes can be associated with documents");
-            }
+    private void apply(DocumentCreated event) {
+        this.accessionNumber = new AccessionNumber(event.getAccessionNumber());
+    }
 
-            RaiseEvent(new DocumentAssociatedWithShareclass(this.Id, association.ShareClassId, association.ShareType.Name.ToString()));
-        }
+    private void apply(DocumentAssociatedWithShareclass event) {
+        DocumentShareClassAssociation dsca = new DocumentShareClassAssociation(event.getDocumentId(),
+                                          event.getShareClassId(),
+                                          ShareClassType.createFromString(event.getShareClassType()));
+        this.shareClassAssociations.add(dsca);
+    }
 
-        private void Apply(DocumentCreated @event)
-        {
-            this.accessionNumber = new AccessionNumber(@event.AccessionNumber);
-        }
+    @Override
+    public void throwHandlerNotFound(Object eventMessage) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
-        private void Apply(DocumentAssociatedWithShareclass @event)
-        {
-            this.shareClassAssociations.Add(
-                new DocumentShareClassAssociation(@event.DocumentId, @event.ShareClassId,
-                    ShareClassType.CreateFromString(@event.ShareClassType)));
-        }
+    @Override
+    public boolean equalsTo(IAggregate other) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

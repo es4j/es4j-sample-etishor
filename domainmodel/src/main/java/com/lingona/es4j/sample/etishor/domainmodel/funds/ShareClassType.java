@@ -1,37 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+package com.lingona.es4j.sample.etishor.domainmodel.funds;
 
-namespace Sample.DomainModel.Funds
-{
-    public class ShareClassType
-    {
-        public enum TypeName
-        {
-            Open,
-            Closed
-        };
+public class ShareClassType {
 
-        public ShareClassType(TypeName type)
-        {
-            this.Name = type;
-        }
+    private TypeName name; // { get; private set; }
 
-        public static ShareClassType CreateFromString(string typeName)
-        {
-            TypeName name = (TypeName)Enum.Parse(typeof(TypeName), typeName);
-            return new ShareClassType(name);
-        }
+    public enum TypeName {
+        Open,
+        Closed
+    };
 
-        public TypeName Name { get; private set; }
+    public ShareClassType(TypeName type) {
+        this.name = type;
+    }
 
-        public bool IsLinkable
-        {
-            get
-            {
-                return this.Name == TypeName.Open;
-            }
-        }
+    public static ShareClassType createFromString(String typeName) {
+        TypeName name = (TypeName) Enum.valueOf(TypeName.class, typeName);
+        return new ShareClassType(name);
+    }
+
+    public boolean isLinkable() {
+
+        return this.name == TypeName.Open;
+
+    }
+
+    public TypeName getName() {
+        return name;
     }
 }
+

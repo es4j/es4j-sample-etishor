@@ -1,21 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+package com.lingona.es4j.sample.etishor.domainmodel.funds;
 
-namespace Sample.DomainModel.Funds
-{
-    public class DocumentShareClassAssociation
-    {
-        public DocumentShareClassAssociation(Guid documentId, Guid shareClassId, ShareClassType shareClassType)
-        {
-            this.DocumentId = documentId;
-            this.ShareClassId = shareClassId;
-            this.ShareType = shareClassType;
-        }
+import java.util.UUID;
 
-        public Guid DocumentId { get; private set; }
-        public Guid ShareClassId { get; private set; }
-        public ShareClassType ShareType { get; private set; }
+public class DocumentShareClassAssociation {
+
+    private final UUID           documentId;   // { get; private set; }
+    private final UUID           shareClassId; // { get; private set; }
+    private final ShareClassType shareType;    // { get; private set; }
+
+    public DocumentShareClassAssociation(UUID documentId, UUID shareClassId, ShareClassType shareClassType) {
+        this.documentId = documentId;
+        this.shareClassId = shareClassId;
+        this.shareType = shareClassType;
+    }
+
+    public UUID getDocumentId() {
+        return documentId;
+    }
+
+    public UUID getShareClassId() {
+        return shareClassId;
+    }
+
+    public ShareClassType getShareType() {
+        return shareType;
     }
 }

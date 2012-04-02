@@ -14,6 +14,9 @@
 
     <modules>
         <module>domainmodel</module>
+        <module>messages</module>
+        <module>appservice</module>
+        <module>tests</module>
     </modules>
     
 </project>

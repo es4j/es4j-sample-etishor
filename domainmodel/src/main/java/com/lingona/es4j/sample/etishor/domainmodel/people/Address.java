@@ -1,10 +1,5 @@
 package com.lingona.es4j.sample.etishor.domainmodel.people;
 
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-
 
 /// Value object representing an address.
 public class Address {

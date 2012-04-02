@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+package com.lingona.es4j.sample.etishor.domainmodel.funds;
 
-namespace Sample.DomainModel.Funds
-{
-    public class Ticker
-    {
-        public Ticker(string symbol)
-        {
-            this.Symbol = symbol;
-        }
 
-        public string Symbol { get; private set; }
+public class Ticker {
+
+    public String symbol; // { get; private set; }
+
+    public Ticker(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public String getSymbol() {
+        return symbol;
     }
 }

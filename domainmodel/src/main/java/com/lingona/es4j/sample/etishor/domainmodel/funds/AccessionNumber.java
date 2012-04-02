@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+package com.lingona.es4j.sample.etishor.domainmodel.funds;
 
-namespace Sample.DomainModel.Funds
-{
-    public class AccessionNumber
-    {
-        public AccessionNumber(string value)
-        {
-            this.Value = value;
-        }
 
-        public string Value { get; private set; }
+public class AccessionNumber {
+    
+    private final String value; // { get; private set; }
+
+    public AccessionNumber(String value) {
+        this.value = value;
+    }
+
+    public String getAccessionNumber() {
+        return value;
+    }
+
+    public String getValue() {
+        return value;
     }
 }
