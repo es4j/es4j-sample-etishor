@@ -1,6 +1,12 @@
 ## Sample project demonstrating CQRS & Event Sourcing
 =====================================================
 
+Originally Forked from:
+etishor (Iulian Margarintescu)
+tweeter://etishor
+Blog    http://www.erata.net
+GitHub  http://github.com/etishor
+
 The sample uses the following projects from Jonathan Oliver (https://github.com/joliver)
 
 * EventStore
