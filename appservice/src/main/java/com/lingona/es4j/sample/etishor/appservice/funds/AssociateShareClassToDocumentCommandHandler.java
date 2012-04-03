@@ -1,6 +1,7 @@
 package com.lingona.es4j.sample.etishor.appservice.funds;
 
 import com.lingona.es4j.domainpersistence.api.IRepository;
+import com.lingona.es4j.sample.etishor.appservice.IHandleMessages;
 import com.lingona.es4j.sample.etishor.domainmodel.funds.Document;
 import com.lingona.es4j.sample.etishor.domainmodel.funds.DocumentShareClassAssociation;
 import com.lingona.es4j.sample.etishor.domainmodel.funds.ShareClassType;

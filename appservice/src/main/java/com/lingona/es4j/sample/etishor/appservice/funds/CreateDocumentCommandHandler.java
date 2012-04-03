@@ -3,6 +3,7 @@ package com.lingona.es4j.sample.etishor.appservice.funds;
 //using Sample.Messages.Commands.Funds;
 
 import com.lingona.es4j.domainpersistence.api.IRepository;
+import com.lingona.es4j.sample.etishor.appservice.IHandleMessages;
 import com.lingona.es4j.sample.etishor.domainmodel.funds.AccessionNumber;
 import com.lingona.es4j.sample.etishor.domainmodel.funds.Document;
 import com.lingona.es4j.sample.etishor.messages.commands.funds.CreateDocument;
@@ -23,8 +24,8 @@ public class CreateDocumentCommandHandler implements IHandleMessages<CreateDocum
 
         public void handle(CreateDocument message)
         {
-            Console.WriteLine(message.getAccessionNumber());
-            Document document = new Document(message.getId(), new AccessionNumber(message.AccessionNumber));
+            //Console.WriteLine(message.getAccessionNumber());
+            Document document = new Document(message.getId(), new AccessionNumber(message.getAccessionNumber()));
             repository.save(document, UUID.randomUUID(), null);
         }
 

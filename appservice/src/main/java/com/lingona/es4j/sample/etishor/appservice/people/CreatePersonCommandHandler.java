@@ -2,6 +2,7 @@ package com.lingona.es4j.sample.etishor.appservice.people;
 
 //using NanoMessageBus;
 import com.lingona.es4j.domainpersistence.api.IRepository;
+import com.lingona.es4j.sample.etishor.appservice.IHandleMessages;
 import com.lingona.es4j.sample.etishor.domainmodel.people.Person;
 import com.lingona.es4j.sample.etishor.messages.commands.people.CreatePerson;
 import java.util.UUID;

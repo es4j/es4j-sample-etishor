@@ -2,6 +2,7 @@ package com.lingona.es4j.sample.etishor.appservice.funds;
 
 //using Sample.Messages.Commands.Funds;
 import com.lingona.es4j.domainpersistence.api.IRepository;
+import com.lingona.es4j.sample.etishor.appservice.IHandleMessages;
 import com.lingona.es4j.sample.etishor.domainmodel.funds.ShareClass;
 import com.lingona.es4j.sample.etishor.domainmodel.funds.ShareClassType;
 import com.lingona.es4j.sample.etishor.domainmodel.funds.Ticker;

@@ -1,6 +1,7 @@
 package com.lingona.es4j.sample.etishor.appservice.people;
 
 import com.lingona.es4j.domainpersistence.api.IRepository;
+import com.lingona.es4j.sample.etishor.appservice.IHandleMessages;
 import com.lingona.es4j.sample.etishor.domainmodel.people.Address;
 import com.lingona.es4j.sample.etishor.domainmodel.people.Person;
 import com.lingona.es4j.sample.etishor.messages.commands.people.MovePerson;
@@ -35,5 +36,4 @@ public class MovePersonCommandHandler implements IHandleMessages<MovePerson> {
         // save
         repository.save(person, UUID.randomUUID(), null);
     }
-}
 }
