@@ -12,4 +12,7 @@ _ReSharper.*
 *.cache
 ~$*
 target/
+
+# Intellij IDEA Files #
 .idea/
+*.iml
